@@ -8,6 +8,7 @@
         text-align: center;
         background: lightgray;
         padding: 1vh 0;
+        margin: 0;
     }
     h1 {
         font-size: 3.5rem;
