@@ -37,5 +37,8 @@
 		"svelte": "^5.0.0",
 		"typescript": "^5.3.2",
 		"vite": "^6.0.0"
+	},
+	"dependencies": {
+		"kiwi-nl": "^0.0.5"
 	}
 }
