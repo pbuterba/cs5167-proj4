@@ -1,5 +1,5 @@
 <script>
-    import {Accordion, AccordionHeader, AccordionBody} from 'kiwi-nl';
+    import {Accordion, AccordionHeader, AccordionBody, Button} from 'kiwi-nl';
     import ContentPage from '$lib/ContentPage.svelte';
     import {categories, faqs} from '$lib/presetData.js';
 </script>
@@ -41,6 +41,12 @@
                 </div>
             {/each}
         </div>
+        <div slot="side-content" class="side-bar">
+            <p>Have a different question?</p>
+            <Button href="/discussion">Ask it</Button>
+            <p>Other categories that should be addressed?</p>
+            <Button href="/category-suggestion">Suggest them</Button>
+        </div>
     </ContentPage>
 </main>
 
@@ -55,5 +61,12 @@
         margin: 2vh auto;
         border: 1.5px dashed black;
         padding: 0.5vh 1vw;
+    }
+    .side-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid black;
+        text-align: center;
     }
 </style>

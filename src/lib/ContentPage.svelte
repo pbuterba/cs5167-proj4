@@ -11,4 +11,8 @@
         padding: 2vh 0 2vh 0;
         font-family: sans-serif;
     }
+    .content-area {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+    }
 </style>
