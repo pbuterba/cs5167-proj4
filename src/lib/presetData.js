@@ -228,3 +228,40 @@ export const faqs = [
         "a": "In winter, set it to 68°F (20°C) during the day and lower at night. In summer, aim for 78°F (26°C). Use a programmable thermostat to adjust automatically."
     }
 ]
+
+export const presetDiscussions = [
+    {
+        "posterName": "Preston Buterbaugh",
+        "posterProfilePic": "",
+        "postTime": "2022-05-22 17:47",
+        "postText": "Grease Question",
+        "replies": [
+            {
+                "posterName": "",
+                "posterProfilePic": "",
+                "postTime": "2022-05-22 18:07",
+                "postText": "Grease answer",
+            },
+            {
+                "posterName": "",
+                "posterProfilePic": "",
+                "postTime": "2022-05-22 20:45",
+                "postText": "Grease comment"
+            }
+        ]
+    },
+    {
+        "posterName": "Ford Buterbaugh",
+        "posterProfilePic": "",
+        "postTime": "2024-12-03 17:47",
+        "postText": "Vinegar question",
+        "replies": [
+            {
+                "posterName": "",
+                "posterProfilePic": "",
+                "postTime": "2022-05-22 18:07",
+                "postText": "Vinegar answer",
+            }
+        ]
+    },
+]
