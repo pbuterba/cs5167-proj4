@@ -1,5 +1,3 @@
-<script>
-    import Header from '$lib/Header.svelte';
-</script>
-
-<Header />
+<main>
+    <h1>Frequently Asked Questions:</h1>
+</main>
