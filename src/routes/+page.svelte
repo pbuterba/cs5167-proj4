@@ -1,3 +1,7 @@
+<script>
+    import {Accordion, AccordionHeader, AccordionBody} from 'kiwi-nl';
+</script>
+
 <main>
     <div class="container">
         <h1>Frequently Asked Questions:</h1>
