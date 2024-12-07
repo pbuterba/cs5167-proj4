@@ -1,30 +1,43 @@
 <script>
     import {Accordion, AccordionHeader, AccordionBody} from 'kiwi-nl';
-    import {categories} from '$lib/presetData.js';
+    import ContentPage from '$lib/ContentPage.svelte';
+    import {categories, faqs} from '$lib/presetData.js';
 </script>
 
-<main>
-    <div class="container">
-        <h1>Frequently Asked Questions:</h1>
+<ContentPage>
+    <h1 slot="header">Frequently Asked Questions:</h1>
+    <div slot="main-content">
         {#each categories as category}
-            <Accordion>
-                <div slot="header">
-                    <AccordionHeader>
-                        {category.name}
-                    </AccordionHeader>
-                </div>
-            </Accordion>
+            <div class="category" style={"background-color: " + category.color}>
+                <Accordion>
+                    <div slot="header">
+                        <AccordionHeader>
+                            {category.name}
+                        </AccordionHeader>
+                    </div>
+                    <AccordionBody slot="body">
+                        {#each faqs as faq}
+                            {#if faq.category === category.name}
+                                <div class="question">
+                                    <p><strong>Q: {faq.q}</strong></p>
+                                    <p><strong>A:</strong> {faq.a}</p>
+                                </div>
+                            {/if}
+                        {/each}
+                    </AccordionBody>
+                </Accordion>
+            </div>
         {/each}
     </div>
-</main>
+</ContentPage>
 
 <style>
-    main {
-        padding: 2vh 0 2vh 0;
-        font-family: sans-serif;
-    }
     h1 {
         text-align: center;
-        margin: 0;
+    }
+    .question {
+        margin: 2vh auto;
+        border: 1.5px dashed black;
+        padding: 0.5vh 1vw;
     }
 </style>
