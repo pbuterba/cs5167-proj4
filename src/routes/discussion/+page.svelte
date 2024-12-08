@@ -8,6 +8,68 @@
     discussionStore.subscribe((discussionList) => {
         discussions = discussionList;
     });
+    
+    let postText;
+    let replyTexts = [];
+    for(let i = 0; i < discussions.length; i++) {
+        replyTexts.push("");
+    }
+
+    function getCurrentTime() {
+        let date = new Date();
+        let dateComponents = date.toLocaleDateString().split('/');
+        let timeComponents = date.toLocaleTimeString().split(" ");
+        let ampm = timeComponents[1];
+        timeComponents = timeComponents[0].split(":");
+
+        let dateString = dateComponents[2] + "-";
+        dateString += dateComponents[0].padStart(2, "0") + "-";
+        dateString += dateComponents[1].padStart(2, "0") + " ";
+        
+        let hour = parseInt(timeComponents[0]);
+        if(hour === 12 && ampm === "AM") {
+            hour = "00";
+        } else if(hour != 12 && ampm === "PM") {
+            hour = (hour + 12).toString();
+        } else {
+            hour = hour.toString().padStart(2, "0");
+        }
+
+        dateString += hour + ":";
+        dateString += timeComponents[1];
+
+        return dateString;
+    }
+
+    function postDiscussion() {
+        let post = {
+            "posterName": "Preston Buterbaugh",
+            "postTime": getCurrentTime(),
+            "postText": postText
+        };
+
+        discussionStore.update((discussions) => {
+            discussions.unshift(post);
+            return discussions;
+        });
+
+        postText = "";
+    }
+
+    function postReply(discussionIndex) {
+        let post = {
+            "posterName": "Preston Buterbaugh",
+            "postTime": getCurrentTime(),
+            "postText": replyTexts[discussionIndex]
+        }; 
+
+        discussionStore.update((discussions) => {
+            discussions[discussionIndex].replies.push(post);
+            return discussions;
+        });
+
+        replyTexts[discussionIndex] = "";
+    }
 </script>
 
 <main>
@@ -15,22 +77,22 @@
         <h1 slot="header">Discussion Forum:</h1>
         <div slot="main-content" class="discussion-board">
             <div id="post-form">
-                <textarea rows="10" cols="110" placeholder="Ask your question..."></textarea>
+                <textarea bind:value={postText} rows="10" cols="110" placeholder="Ask your question..."></textarea>
                 <div class="form-buttons">
-                    <Button type="inverse">Clear</Button>
-                    <Button>Post</Button>
+                    <Button type="inverse" on:click={() => {postText = ''}}>Clear</Button>
+                    <Button on:click={postDiscussion}>Post</Button>
                 </div>
             </div>
-            {#each discussions as discussion}
+            {#each discussions as discussion, i}
                 <DiscussionPost postData={discussion} />
                 {#each discussion.replies as reply}
                     <DiscussionPost postData={reply} reply />
                 {/each}
                 <div class="reply-box">
-                    <TextInput placeholder='Reply to this question...' />
+                    <TextInput bind:value={replyTexts[i]} placeholder='Reply to this question...' />
                     <div class="form-buttons">
-                        <Button type="inverse">Clear</Button>
-                        <Button>Post</Button>
+                        <Button type="inverse" on:click={() => {replyTexts[i] = ""}}>Clear</Button>
+                        <Button on:click={postReply(i)}>Post</Button>
                     </div>
                 </div>
             {/each}
