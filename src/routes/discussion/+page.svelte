@@ -9,7 +9,7 @@
         discussions = discussionList;
     });
     
-    let postText;
+    let postText = "";
     let replyTexts = [];
     for(let i = 0; i < discussions.length; i++) {
         replyTexts.push("");
@@ -42,33 +42,37 @@
     }
 
     function postDiscussion() {
-        let post = {
-            "posterName": "Preston Buterbaugh",
-            "postTime": getCurrentTime(),
-            "postText": postText
-        };
+        if(postText !== "") {
+            let post = {
+                "posterName": "Preston Buterbaugh",
+                "postTime": getCurrentTime(),
+                "postText": postText
+            };
 
-        discussionStore.update((discussions) => {
-            discussions.unshift(post);
-            return discussions;
-        });
+            discussionStore.update((discussions) => {
+                discussions.unshift(post);
+                return discussions;
+            });
 
-        postText = "";
+            postText = "";
+        }
     }
 
     function postReply(discussionIndex) {
-        let post = {
-            "posterName": "Preston Buterbaugh",
-            "postTime": getCurrentTime(),
-            "postText": replyTexts[discussionIndex]
-        }; 
+        if(replyTexts[discussionIndex] !== "") {
+            let post = {
+                "posterName": "Preston Buterbaugh",
+                "postTime": getCurrentTime(),
+                "postText": replyTexts[discussionIndex]
+            }; 
 
-        discussionStore.update((discussions) => {
-            discussions[discussionIndex].replies.push(post);
-            return discussions;
-        });
+            discussionStore.update((discussions) => {
+                discussions[discussionIndex].replies.push(post);
+                return discussions;
+            });
 
-        replyTexts[discussionIndex] = "";
+            replyTexts[discussionIndex] = "";
+        }
     }
 </script>
 
@@ -100,8 +104,6 @@
         <div slot="side-content" class="side-bar">
             <p>Check out Frequently Asked Questions!</p>
             <Button href="/">See FAQs</Button>
-            <p>Other categories that should be addressed?</p>
-            <Button href="/category-suggestion">Suggest them</Button>
         </div>
     </ContentPage>
 </main>

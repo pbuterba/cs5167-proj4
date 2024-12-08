@@ -44,8 +44,6 @@
         <div slot="side-content" class="side-bar">
             <p>Have a different question?</p>
             <Button href="/discussion">Ask it</Button>
-            <p>Other categories that should be addressed?</p>
-            <Button href="/category-suggestion">Suggest them</Button>
         </div>
     </ContentPage>
 </main>
