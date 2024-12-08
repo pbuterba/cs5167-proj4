@@ -1,5 +1,5 @@
 <script>
-    import {Button} from 'kiwi-nl';
+    import {Button, TextInput} from 'kiwi-nl';
     import ContentPage from "$lib/ContentPage.svelte";
     import DiscussionPost from '$lib/DiscussionPost.svelte';
     import {discussionStore} from '$lib/stores.js'
@@ -16,13 +16,23 @@
         <div slot="main-content" class="discussion-board">
             <div id="post-form">
                 <textarea rows="10" cols="110" placeholder="Ask your question..."></textarea>
-                <div id="form-buttons">
+                <div class="form-buttons">
                     <Button type="inverse">Clear</Button>
-                    <Button>Submit</Button>
+                    <Button>Post</Button>
                 </div>
             </div>
             {#each discussions as discussion}
                 <DiscussionPost postData={discussion} />
+                {#each discussion.replies as reply}
+                    <DiscussionPost postData={reply} reply />
+                {/each}
+                <div class="reply-box">
+                    <TextInput placeholder='Reply to this question...' />
+                    <div class="form-buttons">
+                        <Button type="inverse">Clear</Button>
+                        <Button>Post</Button>
+                    </div>
+                </div>
             {/each}
         </div>
         <div slot="side-content" class="side-bar">
@@ -60,10 +70,15 @@
         width: 85%;
         margin: 2vh auto;
     }
-    #form-buttons {
+    .form-buttons {
         display: flex;
         justify-content: flex-end;
+        gap: 1vw;
         width: 100%;
+        margin: 1vh auto;
+    }
+    .reply-box {
+        width: 93.25%;
         margin: 1vh auto;
     }
 </style>

@@ -231,29 +231,29 @@ export const faqs = [
 
 export const presetDiscussions = [
     {
-        "posterName": "Preston Buterbaugh",
+        "posterName": "Peter Hendrix",
         "postTime": "2022-05-22 17:47",
         "postText": "Hello! I am cooking some ground beef and need to figure out what to do with the leftover fat. I know you're not supposed to pour it down the drain. The only time I've ever seen ground beef cooked before, there was an old can sitting around that the grease could be dumped into, and then the can could be thrown away. I don't have one of those. Is there another option for how I can get rid of the fat?",
         "replies": [
             {
-                "posterName": "",
+                "posterName": "Natalie Carson",
                 "postTime": "2022-05-22 18:07",
-                "postText": "Grease answer",
+                "postText": "If you have a china or metal dish you can use, you can pour the grease into that, and then scrape it out fairly easily and wash the dish, once the grease hardens. Just make sure you use a china or metal dish since those will be able to withstand the heat of the liquid grease. A plastic dish may melt if you pour grease into it.",
             },
             {
-                "posterName": "",
+                "posterName": "Jason Packer",
                 "postTime": "2022-05-22 20:45",
-                "postText": "Grease comment"
+                "postText": "I find that a mug works pretty well for this!"
             }
         ]
     },
     {
-        "posterName": "Ford Buterbaugh",
+        "posterName": "Faith Menard",
         "postTime": "2024-12-03 17:17",
         "postText": "I have some plastic tupperware containers that I put pasta in, and now they are stained. Is there any good way to remove stains from tupperware?",
         "replies": [
             {
-                "posterName": "",
+                "posterName": "Ed Driver",
                 "postTime": "2022-05-22 18:07",
                 "postText": "Hot water and vinegar might do the trick! Try putting a cup of hot water in the tupperware along with a teaspoon of vinegar and let it sit for an hour",
             }

@@ -2,6 +2,7 @@
     import profilePhoto from '$lib/images/profile-picture.jpg';
 
     export let postData;
+    export let reply = false;
 
     const MONTH_NAMES = [
         "January",
@@ -46,7 +47,7 @@
     }
 </script>
 
-<main>
+<main class={reply ? "reply" : "main"}>
     <div class="heading">
         <div class="profile-information">
             <img src={profilePhoto} alt="Profile" with="1" class="profile-pic" />
@@ -58,10 +59,16 @@
 </main>
 
 <style>
-    main {
+    .main {
         border: 1px solid black;
-        padding: 0.25vw 1vh;
+        margin-top: 2vh;
+        padding: 1vh 1vw;
         width: 90%;
+    }
+    .reply {
+        border: 1px solid black;
+        padding: 1vh 1vw 1vh 4vw;
+        width: 85.5%;
     }
     h1 {
         font-size: 1.1rem;
